@@ -1,0 +1,478 @@
+edo_nom,sexo,grupo_edad,conteo
+Aguascalientes,Femenino,Adolescentes,216
+Aguascalientes,Femenino,Adultos,47
+Aguascalientes,Femenino,Adultos mayores,13
+Aguascalientes,Femenino,Infancias,17
+Aguascalientes,Femenino,Jóvenes,107
+Aguascalientes,Indeterminado,Adolescentes,0
+Aguascalientes,Indeterminado,Adultos,0
+Aguascalientes,Indeterminado,Adultos mayores,0
+Aguascalientes,Indeterminado,Infancias,0
+Aguascalientes,Indeterminado,Jóvenes,0
+Aguascalientes,Masculino,Adolescentes,117
+Aguascalientes,Masculino,Adultos,172
+Aguascalientes,Masculino,Adultos mayores,47
+Aguascalientes,Masculino,Infancias,27
+Aguascalientes,Masculino,Jóvenes,218
+Baja California,Femenino,Adolescentes,61
+Baja California,Femenino,Adultos,45
+Baja California,Femenino,Adultos mayores,3
+Baja California,Femenino,Infancias,7
+Baja California,Femenino,Jóvenes,97
+Baja California,Indeterminado,Adolescentes,0
+Baja California,Indeterminado,Adultos,0
+Baja California,Indeterminado,Adultos mayores,0
+Baja California,Indeterminado,Infancias,0
+Baja California,Indeterminado,Jóvenes,0
+Baja California,Masculino,Adolescentes,79
+Baja California,Masculino,Adultos,229
+Baja California,Masculino,Adultos mayores,28
+Baja California,Masculino,Infancias,8
+Baja California,Masculino,Jóvenes,322
+Baja California Sur,Femenino,Adolescentes,127
+Baja California Sur,Femenino,Adultos,20
+Baja California Sur,Femenino,Adultos mayores,2
+Baja California Sur,Femenino,Infancias,5
+Baja California Sur,Femenino,Jóvenes,57
+Baja California Sur,Indeterminado,Adolescentes,0
+Baja California Sur,Indeterminado,Adultos,0
+Baja California Sur,Indeterminado,Adultos mayores,0
+Baja California Sur,Indeterminado,Infancias,0
+Baja California Sur,Indeterminado,Jóvenes,0
+Baja California Sur,Masculino,Adolescentes,63
+Baja California Sur,Masculino,Adultos,93
+Baja California Sur,Masculino,Adultos mayores,23
+Baja California Sur,Masculino,Infancias,7
+Baja California Sur,Masculino,Jóvenes,122
+Campeche,Femenino,Adolescentes,51
+Campeche,Femenino,Adultos,8
+Campeche,Femenino,Adultos mayores,1
+Campeche,Femenino,Infancias,2
+Campeche,Femenino,Jóvenes,15
+Campeche,Indeterminado,Adolescentes,0
+Campeche,Indeterminado,Adultos,0
+Campeche,Indeterminado,Adultos mayores,0
+Campeche,Indeterminado,Infancias,0
+Campeche,Indeterminado,Jóvenes,0
+Campeche,Masculino,Adolescentes,19
+Campeche,Masculino,Adultos,21
+Campeche,Masculino,Adultos mayores,5
+Campeche,Masculino,Infancias,3
+Campeche,Masculino,Jóvenes,35
+Chiapas,Femenino,Adolescentes,283
+Chiapas,Femenino,Adultos,50
+Chiapas,Femenino,Adultos mayores,11
+Chiapas,Femenino,Infancias,50
+Chiapas,Femenino,Jóvenes,123
+Chiapas,Indeterminado,Adolescentes,0
+Chiapas,Indeterminado,Adultos,0
+Chiapas,Indeterminado,Adultos mayores,0
+Chiapas,Indeterminado,Infancias,0
+Chiapas,Indeterminado,Jóvenes,0
+Chiapas,Masculino,Adolescentes,147
+Chiapas,Masculino,Adultos,258
+Chiapas,Masculino,Adultos mayores,57
+Chiapas,Masculino,Infancias,63
+Chiapas,Masculino,Jóvenes,318
+Chihuahua,Femenino,Adolescentes,31
+Chihuahua,Femenino,Adultos,10
+Chihuahua,Femenino,Adultos mayores,2
+Chihuahua,Femenino,Infancias,0
+Chihuahua,Femenino,Jóvenes,29
+Chihuahua,Indeterminado,Adolescentes,0
+Chihuahua,Indeterminado,Adultos,0
+Chihuahua,Indeterminado,Adultos mayores,0
+Chihuahua,Indeterminado,Infancias,0
+Chihuahua,Indeterminado,Jóvenes,0
+Chihuahua,Masculino,Adolescentes,31
+Chihuahua,Masculino,Adultos,55
+Chihuahua,Masculino,Adultos mayores,6
+Chihuahua,Masculino,Infancias,6
+Chihuahua,Masculino,Jóvenes,80
+Ciudad de México,Femenino,Adolescentes,675
+Ciudad de México,Femenino,Adultos,145
+Ciudad de México,Femenino,Adultos mayores,87
+Ciudad de México,Femenino,Infancias,73
+Ciudad de México,Femenino,Jóvenes,219
+Ciudad de México,Indeterminado,Adolescentes,3
+Ciudad de México,Indeterminado,Adultos,0
+Ciudad de México,Indeterminado,Adultos mayores,0
+Ciudad de México,Indeterminado,Infancias,1
+Ciudad de México,Indeterminado,Jóvenes,0
+Ciudad de México,Masculino,Adolescentes,332
+Ciudad de México,Masculino,Adultos,431
+Ciudad de México,Masculino,Adultos mayores,197
+Ciudad de México,Masculino,Infancias,67
+Ciudad de México,Masculino,Jóvenes,445
+Coahuila,Femenino,Adolescentes,8
+Coahuila,Femenino,Adultos,9
+Coahuila,Femenino,Adultos mayores,1
+Coahuila,Femenino,Infancias,1
+Coahuila,Femenino,Jóvenes,24
+Coahuila,Indeterminado,Adolescentes,0
+Coahuila,Indeterminado,Adultos,0
+Coahuila,Indeterminado,Adultos mayores,0
+Coahuila,Indeterminado,Infancias,0
+Coahuila,Indeterminado,Jóvenes,0
+Coahuila,Masculino,Adolescentes,5
+Coahuila,Masculino,Adultos,41
+Coahuila,Masculino,Adultos mayores,5
+Coahuila,Masculino,Infancias,1
+Coahuila,Masculino,Jóvenes,56
+Colima,Femenino,Adolescentes,1
+Colima,Femenino,Adultos,2
+Colima,Femenino,Infancias,2
+Colima,Femenino,Jóvenes,6
+Colima,Indeterminado,Adolescentes,0
+Colima,Indeterminado,Adultos,0
+Colima,Indeterminado,Infancias,0
+Colima,Indeterminado,Jóvenes,0
+Colima,Masculino,Adolescentes,7
+Colima,Masculino,Adultos,11
+Colima,Masculino,Infancias,1
+Colima,Masculino,Jóvenes,19
+Durango,Femenino,Adolescentes,169
+Durango,Femenino,Adultos,35
+Durango,Femenino,Adultos mayores,7
+Durango,Femenino,Infancias,6
+Durango,Femenino,Jóvenes,73
+Durango,Indeterminado,Adolescentes,0
+Durango,Indeterminado,Adultos,0
+Durango,Indeterminado,Adultos mayores,0
+Durango,Indeterminado,Infancias,0
+Durango,Indeterminado,Jóvenes,0
+Durango,Masculino,Adolescentes,112
+Durango,Masculino,Adultos,136
+Durango,Masculino,Adultos mayores,34
+Durango,Masculino,Infancias,9
+Durango,Masculino,Jóvenes,182
+Guanajuato,Femenino,Adolescentes,193
+Guanajuato,Femenino,Adultos,75
+Guanajuato,Femenino,Adultos mayores,11
+Guanajuato,Femenino,Infancias,18
+Guanajuato,Femenino,Jóvenes,144
+Guanajuato,Indeterminado,Adolescentes,0
+Guanajuato,Indeterminado,Adultos,0
+Guanajuato,Indeterminado,Adultos mayores,0
+Guanajuato,Indeterminado,Infancias,0
+Guanajuato,Indeterminado,Jóvenes,0
+Guanajuato,Masculino,Adolescentes,111
+Guanajuato,Masculino,Adultos,222
+Guanajuato,Masculino,Adultos mayores,36
+Guanajuato,Masculino,Infancias,21
+Guanajuato,Masculino,Jóvenes,406
+Guerrero,Femenino,Adolescentes,38
+Guerrero,Femenino,Adultos,16
+Guerrero,Femenino,Adultos mayores,1
+Guerrero,Femenino,Infancias,4
+Guerrero,Femenino,Jóvenes,42
+Guerrero,Indeterminado,Adolescentes,0
+Guerrero,Indeterminado,Adultos,0
+Guerrero,Indeterminado,Adultos mayores,0
+Guerrero,Indeterminado,Infancias,0
+Guerrero,Indeterminado,Jóvenes,0
+Guerrero,Masculino,Adolescentes,27
+Guerrero,Masculino,Adultos,89
+Guerrero,Masculino,Adultos mayores,21
+Guerrero,Masculino,Infancias,2
+Guerrero,Masculino,Jóvenes,138
+Hidalgo,Femenino,Adolescentes,266
+Hidalgo,Femenino,Adultos,58
+Hidalgo,Femenino,Adultos mayores,16
+Hidalgo,Femenino,Infancias,32
+Hidalgo,Femenino,Jóvenes,143
+Hidalgo,Indeterminado,Adolescentes,1
+Hidalgo,Indeterminado,Adultos,0
+Hidalgo,Indeterminado,Adultos mayores,0
+Hidalgo,Indeterminado,Infancias,0
+Hidalgo,Indeterminado,Jóvenes,0
+Hidalgo,Masculino,Adolescentes,133
+Hidalgo,Masculino,Adultos,153
+Hidalgo,Masculino,Adultos mayores,39
+Hidalgo,Masculino,Infancias,36
+Hidalgo,Masculino,Jóvenes,210
+Jalisco,Femenino,Adolescentes,6
+Jalisco,Femenino,Adultos,7
+Jalisco,Femenino,Adultos mayores,0
+Jalisco,Femenino,Infancias,0
+Jalisco,Femenino,Jóvenes,14
+Jalisco,Indeterminado,Adolescentes,0
+Jalisco,Indeterminado,Adultos,0
+Jalisco,Indeterminado,Adultos mayores,0
+Jalisco,Indeterminado,Infancias,0
+Jalisco,Indeterminado,Jóvenes,0
+Jalisco,Masculino,Adolescentes,26
+Jalisco,Masculino,Adultos,43
+Jalisco,Masculino,Adultos mayores,11
+Jalisco,Masculino,Infancias,1
+Jalisco,Masculino,Jóvenes,98
+Michoacán,Femenino,Adolescentes,126
+Michoacán,Femenino,Adultos,62
+Michoacán,Femenino,Adultos mayores,11
+Michoacán,Femenino,Infancias,28
+Michoacán,Femenino,Jóvenes,110
+Michoacán,Indeterminado,Adolescentes,0
+Michoacán,Indeterminado,Adultos,0
+Michoacán,Indeterminado,Adultos mayores,0
+Michoacán,Indeterminado,Infancias,0
+Michoacán,Indeterminado,Jóvenes,1
+Michoacán,Masculino,Adolescentes,133
+Michoacán,Masculino,Adultos,363
+Michoacán,Masculino,Adultos mayores,52
+Michoacán,Masculino,Infancias,20
+Michoacán,Masculino,Jóvenes,524
+Morelos,Femenino,Adolescentes,100
+Morelos,Femenino,Adultos,19
+Morelos,Femenino,Adultos mayores,10
+Morelos,Femenino,Infancias,28
+Morelos,Femenino,Jóvenes,72
+Morelos,Indeterminado,Adolescentes,0
+Morelos,Indeterminado,Adultos,0
+Morelos,Indeterminado,Adultos mayores,0
+Morelos,Indeterminado,Infancias,0
+Morelos,Indeterminado,Jóvenes,0
+Morelos,Masculino,Adolescentes,84
+Morelos,Masculino,Adultos,107
+Morelos,Masculino,Adultos mayores,28
+Morelos,Masculino,Infancias,39
+Morelos,Masculino,Jóvenes,152
+México,Femenino,Adolescentes,1498
+México,Femenino,Adultos,279
+México,Femenino,Adultos mayores,97
+México,Femenino,Infancias,337
+México,Femenino,Jóvenes,618
+México,Indeterminado,Adolescentes,0
+México,Indeterminado,Adultos,0
+México,Indeterminado,Adultos mayores,0
+México,Indeterminado,Infancias,0
+México,Indeterminado,Jóvenes,0
+México,Masculino,Adolescentes,755
+México,Masculino,Adultos,826
+México,Masculino,Adultos mayores,309
+México,Masculino,Infancias,336
+México,Masculino,Jóvenes,1164
+Nayarit,Femenino,Adolescentes,126
+Nayarit,Femenino,Adultos,20
+Nayarit,Femenino,Adultos mayores,3
+Nayarit,Femenino,Infancias,5
+Nayarit,Femenino,Jóvenes,47
+Nayarit,Indeterminado,Adolescentes,0
+Nayarit,Indeterminado,Adultos,0
+Nayarit,Indeterminado,Adultos mayores,0
+Nayarit,Indeterminado,Infancias,0
+Nayarit,Indeterminado,Jóvenes,0
+Nayarit,Masculino,Adolescentes,75
+Nayarit,Masculino,Adultos,96
+Nayarit,Masculino,Adultos mayores,26
+Nayarit,Masculino,Infancias,12
+Nayarit,Masculino,Jóvenes,146
+Nuevo León,Femenino,Adolescentes,659
+Nuevo León,Femenino,Adultos,146
+Nuevo León,Femenino,Adultos mayores,37
+Nuevo León,Femenino,Infancias,61
+Nuevo León,Femenino,Jóvenes,308
+Nuevo León,Indeterminado,Adolescentes,0
+Nuevo León,Indeterminado,Adultos,0
+Nuevo León,Indeterminado,Adultos mayores,0
+Nuevo León,Indeterminado,Infancias,0
+Nuevo León,Indeterminado,Jóvenes,0
+Nuevo León,Masculino,Adolescentes,346
+Nuevo León,Masculino,Adultos,525
+Nuevo León,Masculino,Adultos mayores,149
+Nuevo León,Masculino,Infancias,54
+Nuevo León,Masculino,Jóvenes,737
+Oaxaca,Femenino,Adolescentes,9
+Oaxaca,Femenino,Adultos,7
+Oaxaca,Femenino,Adultos mayores,0
+Oaxaca,Femenino,Infancias,1
+Oaxaca,Femenino,Jóvenes,7
+Oaxaca,Indeterminado,Adolescentes,0
+Oaxaca,Indeterminado,Adultos,0
+Oaxaca,Indeterminado,Adultos mayores,0
+Oaxaca,Indeterminado,Infancias,0
+Oaxaca,Indeterminado,Jóvenes,0
+Oaxaca,Masculino,Adolescentes,9
+Oaxaca,Masculino,Adultos,20
+Oaxaca,Masculino,Adultos mayores,5
+Oaxaca,Masculino,Infancias,1
+Oaxaca,Masculino,Jóvenes,28
+Puebla,Femenino,Adolescentes,570
+Puebla,Femenino,Adultos,93
+Puebla,Femenino,Adultos mayores,38
+Puebla,Femenino,Infancias,125
+Puebla,Femenino,Jóvenes,282
+Puebla,Indeterminado,Adolescentes,0
+Puebla,Indeterminado,Adultos,1
+Puebla,Indeterminado,Adultos mayores,0
+Puebla,Indeterminado,Infancias,0
+Puebla,Indeterminado,Jóvenes,0
+Puebla,Masculino,Adolescentes,244
+Puebla,Masculino,Adultos,289
+Puebla,Masculino,Adultos mayores,116
+Puebla,Masculino,Infancias,108
+Puebla,Masculino,Jóvenes,433
+Querétaro,Femenino,Adolescentes,52
+Querétaro,Femenino,Adultos,21
+Querétaro,Femenino,Adultos mayores,3
+Querétaro,Femenino,Infancias,7
+Querétaro,Femenino,Jóvenes,37
+Querétaro,Indeterminado,Adolescentes,0
+Querétaro,Indeterminado,Adultos,0
+Querétaro,Indeterminado,Adultos mayores,0
+Querétaro,Indeterminado,Infancias,0
+Querétaro,Indeterminado,Jóvenes,0
+Querétaro,Masculino,Adolescentes,44
+Querétaro,Masculino,Adultos,60
+Querétaro,Masculino,Adultos mayores,21
+Querétaro,Masculino,Infancias,5
+Querétaro,Masculino,Jóvenes,94
+Quintana Roo,Femenino,Adolescentes,205
+Quintana Roo,Femenino,Adultos,32
+Quintana Roo,Femenino,Adultos mayores,8
+Quintana Roo,Femenino,Infancias,7
+Quintana Roo,Femenino,Jóvenes,64
+Quintana Roo,Indeterminado,Adolescentes,0
+Quintana Roo,Indeterminado,Adultos,0
+Quintana Roo,Indeterminado,Adultos mayores,0
+Quintana Roo,Indeterminado,Infancias,0
+Quintana Roo,Indeterminado,Jóvenes,0
+Quintana Roo,Masculino,Adolescentes,99
+Quintana Roo,Masculino,Adultos,150
+Quintana Roo,Masculino,Adultos mayores,32
+Quintana Roo,Masculino,Infancias,7
+Quintana Roo,Masculino,Jóvenes,225
+San Luis Potosí,Femenino,Adolescentes,126
+San Luis Potosí,Femenino,Adultos,27
+San Luis Potosí,Femenino,Adultos mayores,6
+San Luis Potosí,Femenino,Infancias,17
+San Luis Potosí,Femenino,Jóvenes,50
+San Luis Potosí,Indeterminado,Adolescentes,0
+San Luis Potosí,Indeterminado,Adultos,0
+San Luis Potosí,Indeterminado,Adultos mayores,0
+San Luis Potosí,Indeterminado,Infancias,0
+San Luis Potosí,Indeterminado,Jóvenes,0
+San Luis Potosí,Masculino,Adolescentes,71
+San Luis Potosí,Masculino,Adultos,87
+San Luis Potosí,Masculino,Adultos mayores,46
+San Luis Potosí,Masculino,Infancias,17
+San Luis Potosí,Masculino,Jóvenes,150
+Sinaloa,Femenino,Adolescentes,75
+Sinaloa,Femenino,Adultos,46
+Sinaloa,Femenino,Adultos mayores,6
+Sinaloa,Femenino,Infancias,1
+Sinaloa,Femenino,Jóvenes,68
+Sinaloa,Indeterminado,Adolescentes,0
+Sinaloa,Indeterminado,Adultos,0
+Sinaloa,Indeterminado,Adultos mayores,0
+Sinaloa,Indeterminado,Infancias,0
+Sinaloa,Indeterminado,Jóvenes,0
+Sinaloa,Masculino,Adolescentes,124
+Sinaloa,Masculino,Adultos,392
+Sinaloa,Masculino,Adultos mayores,51
+Sinaloa,Masculino,Infancias,9
+Sinaloa,Masculino,Jóvenes,634
+Sonora,Femenino,Adolescentes,148
+Sonora,Femenino,Adultos,61
+Sonora,Femenino,Adultos mayores,10
+Sonora,Femenino,Infancias,10
+Sonora,Femenino,Jóvenes,98
+Sonora,Indeterminado,Adolescentes,0
+Sonora,Indeterminado,Adultos,0
+Sonora,Indeterminado,Adultos mayores,0
+Sonora,Indeterminado,Infancias,0
+Sonora,Indeterminado,Jóvenes,1
+Sonora,Masculino,Adolescentes,210
+Sonora,Masculino,Adultos,381
+Sonora,Masculino,Adultos mayores,59
+Sonora,Masculino,Infancias,20
+Sonora,Masculino,Jóvenes,577
+Tabasco,Femenino,Adolescentes,18
+Tabasco,Femenino,Adultos,4
+Tabasco,Femenino,Adultos mayores,0
+Tabasco,Femenino,Infancias,2
+Tabasco,Femenino,Jóvenes,8
+Tabasco,Indeterminado,Adolescentes,0
+Tabasco,Indeterminado,Adultos,1
+Tabasco,Indeterminado,Adultos mayores,0
+Tabasco,Indeterminado,Infancias,0
+Tabasco,Indeterminado,Jóvenes,0
+Tabasco,Masculino,Adolescentes,15
+Tabasco,Masculino,Adultos,44
+Tabasco,Masculino,Adultos mayores,12
+Tabasco,Masculino,Infancias,3
+Tabasco,Masculino,Jóvenes,67
+Tamaulipas,Femenino,Adolescentes,227
+Tamaulipas,Femenino,Adultos,44
+Tamaulipas,Femenino,Adultos mayores,12
+Tamaulipas,Femenino,Infancias,14
+Tamaulipas,Femenino,Jóvenes,101
+Tamaulipas,Indeterminado,Adolescentes,0
+Tamaulipas,Indeterminado,Adultos,0
+Tamaulipas,Indeterminado,Adultos mayores,0
+Tamaulipas,Indeterminado,Infancias,0
+Tamaulipas,Indeterminado,Jóvenes,0
+Tamaulipas,Masculino,Adolescentes,140
+Tamaulipas,Masculino,Adultos,328
+Tamaulipas,Masculino,Adultos mayores,66
+Tamaulipas,Masculino,Infancias,7
+Tamaulipas,Masculino,Jóvenes,441
+Tlaxcala,Femenino,Adolescentes,63
+Tlaxcala,Femenino,Adultos,8
+Tlaxcala,Femenino,Adultos mayores,8
+Tlaxcala,Femenino,Infancias,6
+Tlaxcala,Femenino,Jóvenes,23
+Tlaxcala,Indeterminado,Adolescentes,0
+Tlaxcala,Indeterminado,Adultos,0
+Tlaxcala,Indeterminado,Adultos mayores,0
+Tlaxcala,Indeterminado,Infancias,0
+Tlaxcala,Indeterminado,Jóvenes,0
+Tlaxcala,Masculino,Adolescentes,30
+Tlaxcala,Masculino,Adultos,18
+Tlaxcala,Masculino,Adultos mayores,11
+Tlaxcala,Masculino,Infancias,5
+Tlaxcala,Masculino,Jóvenes,35
+Veracruz,Femenino,Adolescentes,263
+Veracruz,Femenino,Adultos,73
+Veracruz,Femenino,Adultos mayores,14
+Veracruz,Femenino,Infancias,26
+Veracruz,Femenino,Jóvenes,142
+Veracruz,Indeterminado,Adolescentes,0
+Veracruz,Indeterminado,Adultos,0
+Veracruz,Indeterminado,Adultos mayores,0
+Veracruz,Indeterminado,Infancias,0
+Veracruz,Indeterminado,Jóvenes,0
+Veracruz,Masculino,Adolescentes,121
+Veracruz,Masculino,Adultos,213
+Veracruz,Masculino,Adultos mayores,47
+Veracruz,Masculino,Infancias,17
+Veracruz,Masculino,Jóvenes,302
+Yucatán,Femenino,Adolescentes,3
+Yucatán,Femenino,Adultos,1
+Yucatán,Femenino,Adultos mayores,0
+Yucatán,Femenino,Infancias,0
+Yucatán,Femenino,Jóvenes,1
+Yucatán,Indeterminado,Adolescentes,0
+Yucatán,Indeterminado,Adultos,0
+Yucatán,Indeterminado,Adultos mayores,0
+Yucatán,Indeterminado,Infancias,0
+Yucatán,Indeterminado,Jóvenes,0
+Yucatán,Masculino,Adolescentes,1
+Yucatán,Masculino,Adultos,7
+Yucatán,Masculino,Adultos mayores,6
+Yucatán,Masculino,Infancias,3
+Yucatán,Masculino,Jóvenes,8
+Zacatecas,Femenino,Adolescentes,129
+Zacatecas,Femenino,Adultos,43
+Zacatecas,Femenino,Adultos mayores,4
+Zacatecas,Femenino,Infancias,14
+Zacatecas,Femenino,Jóvenes,87
+Zacatecas,Indeterminado,Adolescentes,0
+Zacatecas,Indeterminado,Adultos,0
+Zacatecas,Indeterminado,Adultos mayores,0
+Zacatecas,Indeterminado,Infancias,0
+Zacatecas,Indeterminado,Jóvenes,0
+Zacatecas,Masculino,Adolescentes,125
+Zacatecas,Masculino,Adultos,227
+Zacatecas,Masculino,Adultos mayores,34
+Zacatecas,Masculino,Infancias,9
+Zacatecas,Masculino,Jóvenes,363
