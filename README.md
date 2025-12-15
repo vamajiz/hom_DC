@@ -7,4 +7,8 @@ Los archivos que le corresponden son:
 - 02_input/salidas
 - 03_output/rnpdno_2024.csv
 
-2. El análisis de los datos de homicidios proporcionados por INEGI. 
+2. El análisis de los datos de homicidios proporcionados por INEGI. Los archivos relevantes son:
+- 01_codigo/hom_inegi.R
+- 01_codigo/ejercicio_2.Rmd
+- 01_codigo/ejercicio_2.pdf (el pdf final)
+El resto de los archivos son suplementarios.
