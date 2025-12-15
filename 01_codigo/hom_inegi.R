@@ -2,7 +2,8 @@
 # Miguel Vázquez
 
 #Setup ----
-pacman::p_load(tidyverse, purrr, readr, janitor, foreign, sf)
+pacman::p_load(tidyverse, purrr, readr, janitor, foreign, sf, showtext,
+               sysfonts)
 
 # Especificar locale---
 Sys.setlocale("LC_ALL", "UTF-8")
@@ -26,16 +27,16 @@ hom_24 <- read.dbf("02_input/def_inegi_2024/DEFUN24.dbf") %>%
          escolaridad_cat = case_when(
            escolarida == 1  ~ "Sin escolaridad",
            escolarida == 2  ~ "Preescolar",
-           escolarida == 3  ~ "Primaria incompleta",
-           escolarida == 4  ~ "Primaria completa",
-           escolarida == 5  ~ "Secundaria incompleta",
-           escolarida == 6  ~ "Secundaria completa",
-           escolarida == 7  ~ "Bachillerato/preparatoria incompleto",
-           escolarida == 8  ~ "Bachillerato/preparatoria completo",
+           escolarida == 3  ~ "Primaria inc.",
+           escolarida == 4  ~ "Primaria",
+           escolarida == 5  ~ "Secundaria inc.",
+           escolarida == 6  ~ "Secundaria",
+           escolarida == 7  ~ "Prepa inc.",
+           escolarida == 8  ~ "Prepa",
            escolarida == 9  ~ "Profesional",
            escolarida == 10 ~ "Posgrado",
-           escolarida == 88 ~ "No aplica (menores de 3 años)",
-           escolarida == 99 ~ "No especificado",
+           escolarida == 88 ~ "No aplica",
+           escolarida == 99 ~ "No esp.",
            T ~ NA),
          edo_nom = case_when(
            ent_ocurr == "01" ~ "Aguascalientes",
@@ -110,12 +111,20 @@ pareja <- hom_24 %>%
   scale_y_continuous(labels = scales::percent_format(),
                      limits = c(0, 0.65)) +
   labs(
-    y = "Proporción del total por sexo",
+    y = "Proporción del total",
     x = "",
-    title = "Distribución de homicidios por edad y sexo",
-    subtitle = "Porcentaje"
+    title = "Distribución de homicidios por sexo",
+    subtitle = "Porcentaje distribuido entre quienes tenían pareja y quienes no"
   ) +
-  theme_minimal()
+  theme_minimal() +
+  theme(legend.position = "none")
+
+
+ggsave(filename = "03_output/pareja.png",
+       plot = pareja,
+       width = 10, 
+       height = 6,
+       dpi = 300)
 
 
 # Edad a la que más se fallece por sexo
@@ -126,17 +135,24 @@ pond <- hom_24 %>%
   group_by(sexo) %>%
   mutate(pct = n / sum(n)) %>%  
   ggplot(aes(x = edad, y = pct, fill = sexo)) +
-  geom_col(position = "identity", alpha = 0.65) +
+  geom_col(position = "identity", alpha = 0.7) +
   facet_wrap(~sexo) +
   scale_y_continuous(labels = scales::percent_format(),
-                     limits = c(0, 0.037)) +
-  labs(
-    y = "Proporción del total",
+                     limits = c(0, 0.05)) +
+  labs(y = "Proporción del total",
     x = "Edad",
-    title = "Distribución de homicidios por edad y sexo",
-    subtitle = "Distribución porcentual"
-  ) +
-  theme_minimal()
+    title = "Distribución porcentual de homicidios por edad y sexo",
+    subtitle = "") +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+
+ggsave(filename = "03_output/dist_edad_sexo.png",
+       plot = pond,
+       width = 10, 
+       height = 6,
+       dpi = 300)
+
 
 # Guanajuato es donde se concentra la mayor cantidad de homicidios
 
@@ -165,11 +181,55 @@ mapa_comp <- ggplot(mapa) +
     limits = c(0, lim_sup),
     oob = scales::squish,
     labels = function(x) paste0(round(x, 1), "%")) +
+  labs(title = "Distribución porcentual de homicidios por entidad federativa y sexo",
+       subtitle = "") +
   theme_void()
 
+ggsave(filename = "03_output/mapas.png",
+  plot = mapa_comp,
+  width = 10, 
+  height = 6,
+  dpi = 300)
 
-# Pero el estado de México es donde más se concentran en mujeres
+
 # Escolaridades de homicidio por lengua, sexo y afro
   
+educ <- hom_24 %>% 
+  pivot_longer(c(lengua, afromex, sexo),
+    names_to = "categoría",
+    values_to = "valor") %>% 
+  filter(!is.na(valor)) %>% 
+  count(categoría, valor, escolaridad_cat, name = "num") %>% 
+  group_by(categoría, valor) %>% 
+  mutate(pct = num / sum(num)) %>% 
+  ungroup()
+
+
+educ %>% 
+  filter(valor %in% c("Afromexicanx", "Femenino", "Indigena", "Masculino")) %>% 
+  ggplot(aes(x = reorder(escolaridad_cat, -pct), y = pct)) + 
+  geom_col(fill = "Steelblue") +
+  facet_wrap(~valor) +
+  scale_y_continuous(labels = scales::percent_format(),
+                     ) +
+  labs(x = "",
+       y = "Porcentaje dentro de la categoría",
+       title = "Distribución de escolaridad por categoría",
+       subtitle = "Porcentaje respecto al total de cada grupo") +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1))
+
+
+
+# Fuente
+tema_garamond <- theme_minimal(base_family = "garamond") +
+  theme(
+    plot.title = element_text(face = "bold"),
+    axis.title = element_text(),
+    strip.text = element_text(face = "bold"),
+    legend.title = element_text(face = "bold")
+  )
+
+
 
 

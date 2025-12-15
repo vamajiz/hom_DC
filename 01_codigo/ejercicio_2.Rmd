@@ -1,0 +1,312 @@
+---
+title: "Ejercicio 2: Análisis de homicidios"
+author: "Miguel Vázquez"
+date: "2025-12-14"
+
+output:
+  pdf_document:
+    latex_engine: xelatex
+
+linkcolor: blue
+urlcolor: blue
+citecolor: blue
+---
+
+
+```{r setup, include = FALSE}
+
+knitr::opts_chunk$set(echo = FALSE,
+                      message = FALSE,
+                      warning = FALSE)
+
+
+pacman::p_load(tidyverse, purrr, readr, janitor, foreign, sf)
+
+Sys.setlocale("LC_ALL", "UTF-8")
+options(scipen = 999)
+
+# Tema estable y seguro para PDF
+tema_pdf <- theme_minimal() +
+  theme(
+    plot.title = element_text(face = "bold"),
+    strip.text = element_text(face = "bold"),
+    legend.title = element_text(face = "bold"),
+    legend.position = "none"
+  )
+
+theme_set(tema_pdf)
+```
+
+```{r base}
+hom_24 <- read.dbf("../02_input/def_inegi_2024/DEFUN24.dbf") %>% 
+  clean_names() %>% 
+  select(
+    ent_ocurr, tipo_defun, sexo, afromex, lengua,
+    edad, escolarida, edo_civil
+  ) %>% 
+  mutate(
+    edad = case_when(
+      edad >= 4001 & edad <= 4120 ~ as.numeric(edad - 4000),
+      edad >= 2001 & edad <= 2029 ~ (edad - 2000) / 365,
+      edad >= 3001 & edad <= 3011 ~ (edad - 3000) / 12,
+      edad >= 1001 & edad <= 1023 ~ 0,
+      edad == 1097 ~ 0,
+      edad %in% c(1098, 2098, 3098, 4998) ~ NA,
+      TRUE ~ NA
+    ),
+    edad = ifelse(edad <= 1, 0, edad),
+
+    escolaridad_cat = case_when(
+      escolarida == 1  ~ "Sin escolaridad",
+      escolarida == 2  ~ "Preescolar",
+      escolarida == 3  ~ "Primaria inc.",
+      escolarida == 4  ~ "Primaria",
+      escolarida == 5  ~ "Secundaria inc.",
+      escolarida == 6  ~ "Secundaria",
+      escolarida == 7  ~ "Prepa inc.",
+      escolarida == 8  ~ "Prepa",
+      escolarida == 9  ~ "Profesional",
+      escolarida == 10 ~ "Posgrado",
+      escolarida == 88 ~ "No aplica",
+      escolarida == 99 ~ "No esp.",
+      TRUE ~ NA
+    ),
+
+    edo_nom = case_when(
+      ent_ocurr == "01" ~ "Aguascalientes",
+      ent_ocurr == "02" ~ "Baja California",
+      ent_ocurr == "03" ~ "Baja California Sur",
+      ent_ocurr == "04" ~ "Campeche",
+      ent_ocurr == "05" ~ "Coahuila",
+      ent_ocurr == "06" ~ "Colima",
+      ent_ocurr == "07" ~ "Chiapas",
+      ent_ocurr == "08" ~ "Chihuahua",
+      ent_ocurr == "09" ~ "Ciudad de México",
+      ent_ocurr == "10" ~ "Durango",
+      ent_ocurr == "11" ~ "Guanajuato",
+      ent_ocurr == "12" ~ "Guerrero",
+      ent_ocurr == "13" ~ "Hidalgo",
+      ent_ocurr == "14" ~ "Jalisco",
+      ent_ocurr == "15" ~ "México",
+      ent_ocurr == "16" ~ "Michoacán",
+      ent_ocurr == "17" ~ "Morelos",
+      ent_ocurr == "18" ~ "Nayarit",
+      ent_ocurr == "19" ~ "Nuevo León",
+      ent_ocurr == "20" ~ "Oaxaca",
+      ent_ocurr == "21" ~ "Puebla",
+      ent_ocurr == "22" ~ "Querétaro",
+      ent_ocurr == "23" ~ "Quintana Roo",
+      ent_ocurr == "24" ~ "San Luis Potosí",
+      ent_ocurr == "25" ~ "Sinaloa",
+      ent_ocurr == "26" ~ "Sonora",
+      ent_ocurr == "27" ~ "Tabasco",
+      ent_ocurr == "28" ~ "Tamaulipas",
+      ent_ocurr == "29" ~ "Tlaxcala",
+      ent_ocurr == "30" ~ "Veracruz",
+      ent_ocurr == "31" ~ "Yucatán",
+      ent_ocurr == "32" ~ "Zacatecas",
+      TRUE ~ NA
+    ),
+
+    afromex = case_when(
+      afromex %in% c("8", "9") ~ NA,
+      afromex == "1" ~ "Afrodescendiente",
+      afromex == "2" ~ "No Afrodescendiente",
+      TRUE ~ NA
+    ),
+
+    lengua = case_when(
+      lengua %in% c("8", "9") ~ NA,
+      lengua == "1" ~ "Indigena",
+      lengua == "2" ~ "No indigena",
+      TRUE ~ NA
+    ),
+
+    sexo = case_when(
+      sexo == 1 ~ "Masculino",
+      sexo == 2 ~ "Femenino",
+      TRUE ~ "Otro"
+    ),
+
+    pareja = case_when(
+      edo_civil %in% c(4, 5) ~ "Con pareja",
+      edo_civil %in% c(1, 2, 3, 6) ~ "Sin pareja",
+      edo_civil %in% c(8, 9) ~ NA,
+      TRUE ~ NA
+    )
+  ) %>% 
+  filter(tipo_defun == 2) %>% 
+  select(
+    sexo, afromex, lengua, edad,
+    escolaridad_cat, edo_nom, pareja, ent_ocurr
+  ) %>% 
+  as_tibble()
+```
+
+El objetivo de este breve análisis es visualizar algunos de los patrones de los homicidios violentos respecto a grupos históricamente vulnerados en México. La primera parte describe los datos y su tratamiento, la segunda explora algunos patrones encontrados en la información y la última ofrece una conclusión con una reflexión sobre el tema.
+
+## Datos
+
+El análisis se realizó con las [Estadísticas de Defunciones Registradas (EDR)](https://www.inegi.org.mx/programas/edr/ "Página de INEGI") de INEGI, correspondientes al año 2024. Los datos incluyen exclusivamente defunciones por presunto homicidio, catalogados en la base de datos como tipo de defunción == 2 (Homicidio [Agresión].)
+
+Las variables de la base de datos que se utilizaron fueron: 
+
+- **ent_ocurr**: Entidad de ocurrencia.  
+- **tipo_defun**: Tipo de defunción.  
+- **sexo**: Sexo del (la) fallecido (a).  
+- **afromex**: Condición de autoadscripción como persona afromexicana.  
+- **lengua**: Condición de habla lengua indígena.  
+- **edad**: Edad de la persona fallecida.  
+- **escolarida**: Nivel de escolaridad de la persona fallecida.  
+- **edo_civil**: Situación conyugal de la persona fallecida.  
+
+
+Las variables seleccionadas se recodificaron con la etiqueta de cada valor siguiendo el descriptor de variables para facilidad de lectura. Así, en la variable escolaridad en una observación ya no aparecería "8", sino "Preparatoria terminada". Se transformó la variable edad a valores en años numéricos (eg. 4, 23, 44 años) y se creó la variable pareja, que engloba si la persona fallecida estaba casada, en unión libre o cualquier otro tipo de relación o si se encontraba soltera al momento del hecho. Esta variable, sin embargo, tiene una capacidad explicativa limitada por no capturar las relaciones que no están en las categorías establecidas en la base de datos, como el caso de las personas que estaban en noviazgos que no necesariamente eran uniones libres.
+
+Por la naturaleza del fenómeno que explican, los datos de homicidio tienen un número mucho mayor de registros de personas del sexo masculino que personas del sexo femenino, como se puede ver en la siguiente tabla. Esto dificulta la comparación, por lo que en todas las figuras y su análisis se utilizan los porcentajes respecto al total de homicidios de ese sexo. Así no se va a comparar, por ejemplo, 10,000 homicidios de un sexo contra 2,000 homicidios de otro, sino un 20% respecto a un 8% sin importar la cantidad de homicidios que se hayan cometido en cada uno.
+
+```{r tabla totales, fig.align = "center"}
+
+data <- hom_24 %>% 
+  filter(!is.na(sexo)) %>% 
+  count(sexo, name = "Homicidios") %>% 
+  mutate(Porcentaje = Homicidios / sum(Homicidios),
+    Porcentaje = scales::percent(Porcentaje, accuracy = 0.1),
+    Homicidios = scales::comma(Homicidios)) %>% 
+  rename(Sexo = sexo)
+
+
+knitr::kable(data,
+caption = "Distribución de homicidios por sexo")
+
+
+
+
+
+```
+
+## Análisis de patrones
+
+### Homicidios por situación conyugal
+
+
+En esta primera figura se encuentra la comparación entre los homicidios que se cometieron a personas con pareja y personas sin pareja dividido por sexo. Los porcentajes mostrados muestran que, en general, las personas con pareja tienden a ser menos asesinadas, aunque las cifras varían entre sexos. Las personas del sexo femenino son más asesinadas cuando no tienen pareja que las del masculino. Dado que la diferencia de los porcentajes entre tener o no pareja en las personas del sexo femenino es más grande (diferencia de 15.6 para el sexo masculino contra 24.8 del femenino), podría decirse que el efecto de tener pareja parece tener mayor impacto en las personas del sexo femenino que en las del masculino. Una posible respuesta a esto puede ser el papel de protectores que típicamente se les asigna a las personas del sexo masculino. Así, las personas del sexo femenino que no tienen pareja pueden ser leídas como "más vulnerables" ante personas que buscan hacerles daño. Esto es relevante porque la situación conyugal no afecta de manera igual a ambos sexos, lo que resalta una desigualdad causada por motivos sociales entre sexos.
+
+```{r barras, fig.align = "center"}
+
+pareja <- hom_24 %>%
+  filter(
+    sexo %in% c("Femenino", "Masculino"),
+    pareja %in% c("Con pareja", "Sin pareja")
+  ) %>%
+  count(sexo, pareja) %>%
+  group_by(sexo) %>%
+  mutate(
+    pct = n / sum(n)
+  ) %>%
+  ggplot(aes(x = pareja, y = pct, fill = sexo)) +
+  geom_col(alpha = 0.8) +
+  geom_text(
+    aes(label = scales::percent(pct, accuracy = 0.1)),
+    vjust = -0.4,
+    size = 3
+  ) +
+  facet_wrap(~sexo) +
+  scale_y_continuous(
+    labels = scales::percent_format(),
+    limits = c(0, 0.65)
+  ) +
+  labs(
+    y = "Proporción del total",
+    x = "",
+    title = "Distribución de homicidios por sexo",
+    subtitle = "Porcentaje distribuido entre quienes tenían pareja y quienes no"
+  )
+
+pareja
+
+```
+
+### Homicidios por entidad federativa
+
+
+En la siguiente figura se muestra la distribución de homicidios por sexo en el país. Como se puede notar, los homicidios en ambos sexos siguen patrones muy similares, estando concentrados en las mismas entidades de la República. Resaltan los estados de Baja California, Sonora, Chihuahua, Nuevo León, Jalisco, Michoacán, Guerrero, Estado de México y Guanajuato. Si bien es cierto que para Guanajuato, Baja California y Estado de México hay una mayor cantidad de homicidios de personas del sexo masculino que del femenino, el porcentaje de estas últimas es mayor, lo que quiere decir que la violencia en estas entidades afecta más a las personas del sexo femenino. Esto es relevante porque la mayoría de la atención mediática se centra en los conflictos entre grupos delictivos o agentes que involucran principalmente a personas del sexo masculino, invisibilizando el hecho de que las personas del sexo femenino son más afectadas proporcionalmente.
+
+```{r mapa, fig.align = "center"}
+
+edo_sf <- st_read("../02_input/00ent.shp", quiet = TRUE) %>% 
+  rename(ent_ocurr = CVE_ENT)
+
+resumen_edos <- hom_24 %>%
+  filter(sexo %in% c("Femenino", "Masculino")) %>%
+  count(ent_ocurr, sexo, name = "num") %>%
+  complete(
+    ent_ocurr = edo_sf$ent_ocurr,
+    sexo = c("Femenino", "Masculino"),
+    fill = list(num = 0)
+  ) %>%
+  group_by(sexo) %>%
+  mutate(pct_sexo = 100 * num / sum(num)) %>%
+  ungroup()
+
+mapa <- edo_sf %>%
+  left_join(resumen_edos, by = "ent_ocurr")
+
+
+mapa_comp <- ggplot(mapa) +
+  geom_sf(aes(fill = pct_sexo), color = "grey40", linewidth = 0.2) +
+  facet_wrap(~sexo) +
+  scale_fill_viridis_c(
+    name = "Porcentaje",
+    labels = function(x) paste0(round(x, 1), "%")
+  ) +
+  labs(
+    title = "Distribución de homicidios por entidad federativa",
+    subtitle = "Porcentaje del total nacional por sexo"
+  ) +
+  theme_void()
+
+
+mapa_comp
+```
+
+### Escolaridad por grupo poblacional
+
+En esta gráfica se observa el nivel de escolaridad que tenían las personas pertenecientes de cuatro grupos poblacionales al momento de su homicidio. Tres de los grupos poblacionales son algunos de los que históricamente han sido discriminados y se les han negado oportunidades: personas del sexo femenino, personas indígenas y personas afrodescendientes. En la gráfica destaca que las personas del sexo femenino son más asesinadas que las del sexo masculino cuando ambos tienen educación profesional y que las personas del sexo femenino sin escolaridad son más asesinadas que las del sexo masculino con el mismo nivel educativo. Asimismo, puede notarse que, de las personas sin escolaridad, las indígenas son las más asesinadas. También se puede notar que el único grupo en el que la escolaridad más recurrente de personas asesinadas no es nivel secundaria es el de las personas afrodescendientes, que es nivel primaria. Estos hallazgos son importantes porque nos ayudan a entender cómo la escolaridad no otorga oportunidades o mejores condiciones de vida de manera igualitaria entre los grupos poblacionales analizados.
+
+```{r educ, fig.align = "center"}
+
+educ <- hom_24 %>% 
+  pivot_longer(
+    c(lengua, afromex, sexo),
+    names_to = "categoría",
+    values_to = "valor") %>% 
+  filter(!is.na(valor)) %>% 
+  count(categoría, valor, escolaridad_cat, name = "num") %>% 
+  group_by(categoría, valor) %>% 
+  mutate(pct = num / sum(num)) %>% 
+  ungroup()
+
+
+educ %>% 
+  filter(valor %in% c("Afrodescendiente", "Femenino", "Indigena", "Masculino")) %>% 
+  ggplot(aes(x = reorder(escolaridad_cat, -pct), y = pct)) + 
+  geom_col(fill = "steelblue") +
+  facet_wrap(~valor) +
+  scale_y_continuous(labels = scales::percent_format()) +
+  labs(
+    x = "",
+    y = "Porcentaje dentro de la categoría",
+    title = "Distribución de escolaridad por categoría",
+    subtitle = "Porcentaje respecto al total de cada grupo"
+  ) +
+  theme(
+    axis.text.x = element_text(angle = 90, vjust = 0.5, hjust = 1)
+  )
+```
+
+## Conclusión.
+
+La forma en la que se distribuyen los homicidios en México no es al azar, ni resulta de dinámicas criminales aisladas, sino que estas responden a ideas preconcebidas y estereotipos que refuerzan las desigualdades preexistentes. Las diferencias sistemáticas por sexo, escolaridad, adscripción étnica y situación conyugal indican que el riesgo de homicidio se distribuye de manera desigual entre la población, reproduciendo jerarquías sociales que también influyen en el acceso a educación, redes de protección y reconocimiento institucional. En este sentido, variables comúnmente asociadas a mejores condiciones de vida (como la escolaridad o la conformación de una pareja) no funcionan como factores de protección universales, sino que su efecto depende del grupo social al que se pertenece. Así, los homicidios no solo reflejan fallas en la contención de la violencia, sino también las limitaciones del Estado para garantizar condiciones mínimas de seguridad de forma equitativa entre grupos históricamente vulnerados.
+
+Los homicidios son una de muchas posibles variables que evidencian las desigualdades sistémicas en el país. La incidencia de estos da un indicio de la falta de políticas públicas basadas en evidencia que retomen y consideren los factores relevantes dentro de estas dinámicas perjudiciales. Contar con soluciones públicas que reconozcan la extensión y gravedad del problema puede no sólo salvar vidas, sino también contribuir a reducir la reproducción de desigualdades estructurales que colocan sistemáticamente a ciertos grupos poblacionales en mayor riesgo de victimización letal.
